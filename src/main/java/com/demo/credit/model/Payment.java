@@ -1,40 +1,40 @@
 package com.demo.credit.model;
 
 public class Payment {
-    private double primaryDebtPayment;
-    private double percentPayment;
-    private double remainingDebt;
-    private double allPayment;
+    private String primaryDebtPayment;
+    private String percentPayment;
+    private String remainingDebt;
+    private String allPayment;
 
-    public double getPrimaryDebtPayment() {
+    public String getPrimaryDebtPayment() {
         return primaryDebtPayment;
     }
 
-    public void setPrimaryDebtPayment(double primaryDebtPayment) {
+    public void setPrimaryDebtPayment(String primaryDebtPayment) {
         this.primaryDebtPayment = primaryDebtPayment;
     }
 
-    public double getPercentPayment() {
+    public String getPercentPayment() {
         return percentPayment;
     }
 
-    public void setPercentPayment(double percentPayment) {
+    public void setPercentPayment(String percentPayment) {
         this.percentPayment = percentPayment;
     }
 
-    public double getRemainingDebt() {
+    public String getRemainingDebt() {
         return remainingDebt;
     }
 
-    public void setRemainingDebt(double remainingDebt) {
+    public void setRemainingDebt(String remainingDebt) {
         this.remainingDebt = remainingDebt;
     }
 
-    public double getAllPayment() {
+    public String getAllPayment() {
         return allPayment;
     }
 
-    public void setAllPayment(double allPayment) {
+    public void setAllPayment(String allPayment) {
         this.allPayment = allPayment;
     }
 }

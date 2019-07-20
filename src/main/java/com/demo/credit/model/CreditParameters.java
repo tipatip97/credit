@@ -6,7 +6,7 @@ public class CreditParameters {
     @NotNull
     @Min(value = 100000, message = "Минимальный размер кредита - 100000")
     @Max(value = 5000000, message = "Максимальный размер кредита - 5000000")
-    private Integer size;
+    private Double size;
 
     @NotNull
     @Min(value = 12, message = "Минимальный период - 12 месяцев")
@@ -18,11 +18,11 @@ public class CreditParameters {
     @DecimalMax(value = "23.9", message = "Максимальная процентная ставка - 23.9%")
     private Double yearPercent;
 
-    public Integer getSize() {
+    public Double getSize() {
         return size;
     }
 
-    public void setSize(Integer size) {
+    public void setSize(Double size) {
         this.size = size;
     }
 

@@ -23,7 +23,7 @@
                 <label for="inputLoanSize" class="col-sm-2 col-form-label">Сумма кредита</label>
                 <div class="col-sm-10">
                     <input type="number" class="form-control" id="inputLoanSize" name="size"
-                           placeholder="100 000 - 5 000 0000" th:field="*{size}"
+                           placeholder="100 000 - 5 000 000" th:field="*{size}"
                            th:classappend="${#fields.hasErrors('size') ? 'is-invalid' : ''}">
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('size')}" th:errors="*{size}">Ошибка в этом поле!</div>
                 </div>
@@ -56,25 +56,25 @@
 
 
 
-        <table class="table table-striped table-hover ">
+        <table class="table table-striped table-hover" th:if="${payments}">
             <thead class="thead-light">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Месяц/Год</th>
                 <th scope="col">Платёж по основному долгу</th>
                 <th scope="col">Платёж по процентам</th>
-                <th scope="col">Остаток основного долга</th>
                 <th scope="col">Общая сумма платежа</th>
+                <th scope="col">Остаток основного долга</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="payment : ${payments}">
-                <th scope="row">1</th>
-                <td>09/2019</td>
-                <td>10340</td>
-                <td>528</td>
-                <td>380000</td>
-                <td>10868</td>
+            <tr th:each="payment, iter : ${payments}">
+                <th scope="row" th:text="${iter.index + 1}">#</th>
+                <td style="text-align: center" >00/0000</td>
+                <td style="text-align: center" th:text="${payment.primaryDebtPayment}">0</td>
+                <td style="text-align: center" th:text="${payment.percentPayment}">0</td>
+                <td style="text-align: center" th:text="${payment.allPayment}">0</td>
+                <td style="text-align: center" th:text="${payment.remainingDebt}">0</td>
             </tbody>
         </table>
     </div>
