@@ -1,10 +1,19 @@
 package com.demo.credit.model;
 
 public class Payment {
+    private String date;
     private String primaryDebtPayment;
     private String percentPayment;
     private String remainingDebt;
     private String allPayment;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getPrimaryDebtPayment() {
         return primaryDebtPayment;

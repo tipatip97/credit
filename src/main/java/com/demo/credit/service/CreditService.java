@@ -4,6 +4,9 @@ import com.demo.credit.model.CreditParameters;
 import com.demo.credit.model.Payment;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +23,7 @@ public class CreditService {
 
         List<Payment> result = new ArrayList<>();
 
+        LocalDate date = params.getFirstPaymentDate();
         double remainingDebt = params.getSize();
 
         for (int i = 0; i < params.getPeriod(); i++) {
@@ -31,12 +35,15 @@ public class CreditService {
             remainingDebt -= primaryDebtPayment;
 
             Payment oneOfPayments = new Payment();
+            oneOfPayments.setDate(date.format(DateTimeFormatter.ofPattern("MM/yyyy")));
             oneOfPayments.setPrimaryDebtPayment(String.format("%,.2f", primaryDebtPayment));
             oneOfPayments.setPercentPayment(String.format("%,.2f", percentPayment));
             oneOfPayments.setAllPayment(String.format("%,.2f", annuitPayment));
             oneOfPayments.setRemainingDebt(String.format("%,.2f", remainingDebt));
 
             result.add(oneOfPayments);
+
+            date = date.plus(1, ChronoUnit.MONTHS);
         }
 
         return result;

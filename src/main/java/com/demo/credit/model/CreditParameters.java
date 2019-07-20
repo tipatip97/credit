@@ -1,6 +1,8 @@
 package com.demo.credit.model;
 
 import javax.validation.constraints.*;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class CreditParameters {
     @NotNull
@@ -17,6 +19,8 @@ public class CreditParameters {
     @DecimalMin(value = "12.9", message = "Минимальная процентная ставка - 12.9%")
     @DecimalMax(value = "23.9", message = "Максимальная процентная ставка - 23.9%")
     private Double yearPercent;
+
+    private LocalDate firstPaymentDate = LocalDate.now().plus(1, ChronoUnit.MONTHS);
 
     public Double getSize() {
         return size;
@@ -40,5 +44,13 @@ public class CreditParameters {
 
     public void setYearPercent(Double yearPercent) {
         this.yearPercent = yearPercent;
+    }
+
+    public LocalDate getFirstPaymentDate() {
+        return firstPaymentDate;
+    }
+
+    public void setFirstPaymentDate(LocalDate firstPaymentDate) {
+        this.firstPaymentDate = firstPaymentDate;
     }
 }
